@@ -1,0 +1,57 @@
+<div class="card">
+  <h4 class="card-header">Search tickets</h4>
+  <div class="card-body">
+    <form [formGroup]="form" (ngSubmit)="onSearchSubmit()">
+      <div class="mb-3">
+        <label class="form-label">Ticket Type</label>
+        <select id="ticketType" name="ticketType" class="form-control" formControlName="ticketType" required>
+          <option *ngFor="let ticketType of ticketTypes" [value]="ticketType.id">{{ticketType.name}}</option>
+        </select>
+      </div>
+      <div class="row">
+        <div class="col-sm-6 mb-3">
+          <label class="form-label">Source</label>
+          <select id="source" name="source" class="form-control" formControlName="sourceId" required>
+            <option *ngFor="let location of locations" [value]="location.id">{{location.name}}</option>
+          </select>
+        </div>
+        <div class="col-sm-6 mb-3">
+          <label class="form-label">Destination</label>
+          <select id="source" name="destination" class="form-control" formControlName="destinationId" required>
+            <option *ngFor="let location of locations" [value]="location.id">{{location.name}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6 mb-3">
+          <label class="form-label">Departure Date</label>
+          <input type="date" formControlName="departureDate" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f['departureDate'].errors }" />
+          <div *ngIf="submitted && f['departureDate'].errors" class="invalid-feedback">
+            <div *ngIf="f['departureDate'].errors['required']">First Name is required</div>
+          </div>
+        </div>
+        <!-- <div class="col-sm-6 mb-3">
+          <label class="form-label">Return Date</label>
+          <input type="date" formControlName="returnDate" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f['returnDate'].errors }" />
+          <div *ngIf="submitted && f['returnDate'].errors" class="invalid-feedback">
+            <div *ngIf="f['returnDate'].errors['required']">First Name is required</div>
+          </div>
+        </div> -->
+      </div>
+      <div>
+        <button [disabled]="loading" class="btn btn-primary">
+          <span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span>
+          Search
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+<!-- <app-ticket *ngIf="ticket" [ticket]="ticket"></app-ticket> -->
+
+<app-scheduledetails [schedules] ="schedules"></app-scheduledetails>
+
+
+
