@@ -16,7 +16,7 @@ namespace BookingSystem.Services.Implement
         {
             try
             {
-                var route = (await _routesRepository.FindAsync(x => x.SourceId == sourceId && x.DestinationId == destinationId)).First();
+                var route = (await _routesRepository.FindAsync(x => x.SourceId == sourceId && x.DestinationId == destinationId, x => x.Source, x => x.Destination)).First();
 
                 return (true, route.ConvertToRouteDto(), string.Empty);
             }

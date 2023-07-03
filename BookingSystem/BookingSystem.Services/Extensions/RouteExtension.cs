@@ -15,7 +15,9 @@ namespace BookingSystem.Services.Extensions
                 SourceId = route.SourceId,
                 DestinationId = route.DestinationId,
                 JourneyTime = route.JourneyTime,
-                Stops = route.Stops
+                Stops = route.Stops,
+                SourceName = route.Source.Name,
+                DestinationName = route.Destination.Name
             };
 
         }

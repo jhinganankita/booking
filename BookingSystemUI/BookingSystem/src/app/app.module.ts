@@ -13,6 +13,10 @@ import { AlertComponent } from './alert/alert.component';
 import { ScheduledetailsComponent } from './home/scheduledetails/scheduledetails.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ConfirmbookingComponent } from './home/confirmbooking/confirmbooking.component';
+import { AdminComponent } from './admin/admin.component';
+import { TickethistoryComponent } from './home/tickethistory/tickethistory.component';
+import { TableModule } from 'ngx-easy-table';
+import { DataTablesModule } from "angular-datatables";
 
 //import { LoginComponent } from './account/login/login.component';
 //import { RegisterComponent } from './account/register/register.component';
@@ -32,6 +36,8 @@ const routes: Routes = [
     AlertComponent,
     ScheduledetailsComponent,
     ConfirmbookingComponent,
+    AdminComponent,
+    TickethistoryComponent,
 
   ],
   imports: [NgbModule ,
@@ -40,6 +46,8 @@ const routes: Routes = [
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    TableModule,
+    DataTablesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

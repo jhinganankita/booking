@@ -10,6 +10,7 @@ import { ILocation } from '../models/ILocation';
 import { ITicket } from '../models/ITicket';
 import { IScheduleRequest } from '../models/IScheduleRequest';
 import { Schedules } from '../models/Schedule';
+import {DataTablesResponse} from '../models/DataTablesResponse'
 
 @Injectable({
   providedIn: 'root'
@@ -38,6 +39,20 @@ export class BookingService {
 
     searchBookings(scheduleRequest: IScheduleRequest): Observable<Schedules[]> {
       return this.httpClient.post<Schedules[]>(`${this.baseURL}schedules`, scheduleRequest);
+    }
+
+    confirmBooking(ticket: ITicket): Observable<ITicket> {
+      return this.httpClient.post<ITicket>(`${this.baseURL}tickets`, ticket);
+    }
+
+    getTickets(userId: number): Observable<ITicket[]>{
+
+      return this.httpClient.get<ITicket[]>(`${this.baseURL}tickets?userId=${userId}`);
+    }
+
+    getUserTickets(): Observable<ITicket[]>{
+
+      return this.httpClient.get<ITicket[]>(`${this.baseURL}admintickets/GetUserTickets`);
     }
 }
 

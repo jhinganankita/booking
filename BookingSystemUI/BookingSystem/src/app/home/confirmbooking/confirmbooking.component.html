@@ -1,77 +1,76 @@
-npm <div class="modal" tabindex="-1" role="dialog" [formGroup]="form" id="frameConfirmBooking">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+<form [formGroup]="form" (ngSubmit)="onBookingSubmit()">
+  <div class="modal-header">
+    <h4 class="modal-title">Confirm Booking</h4>
+    <button type="button" class="close" aria-label="Close" (click)="close()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+
+    <div class="md-form mb-5">
+      <label class="form-label">Ticket Type</label>
+      <input type="text" formControlName="ticketType" class="form-control" />
+    </div>
+    <div class="row">
+      <div class="col-sm-6 mb-3">
+        <label class="form-label">Source</label>
+        <input type="text" formControlName="sourceId" class="form-control" />
       </div>
-      <div class="modal-body">
-        <div class="md-form mb-5">
-          <label class="form-label">Ticket Type</label>
-          <input type="date" formControlName="ticketType" class="form-control" [disabled]="true" />
-        </div>
-        <div class="row">
-          <div class="col-sm-6 mb-3">
-            <label class="form-label">Source</label>
-            <input type="date" formControlName="sourceId" class="form-control" [disabled]="true" />
-          </div>
-          <div class="col-sm-6 mb-3">
-            <label class="form-label">Destination</label>
-            <input type="date" formControlName="destinationId" class="form-control" [disabled]="true" />
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-6 mb-3">
-            <label class="form-label">Departure Date</label>
-            <input type="date" formControlName="departureDate" class="form-control"
-              [ngClass]="{ 'is-invalid': submitted && f['departureDate'].errors }" />
-            <div *ngIf="submitted && f['departureDate'].errors" class="invalid-feedback">
-              <div *ngIf="f['departureDate'].errors['required']">First Name is required</div>
-            </div>
-          </div>
-          <div class="col-sm-6 mb-3">
-            <label class="form-label">Fare / Ticket</label>
-            <input type="date" formControlName="fare" class="form-control"
-              [ngClass]="{ 'is-invalid': submitted && f['departureDate'].errors }" />
-            <div *ngIf="submitted && f['departureDate'].errors" class="invalid-feedback">
-              <div *ngIf="f['departureDate'].errors['required']">First Name is required</div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-6 mb-3">
-            <label class="form-label">Number of Passengers</label>
-            <input type="date" formControlName="passengerNumber" class="form-control"
-              [ngClass]="{ 'is-invalid': submitted && f['departureDate'].errors }" />
-            <div *ngIf="submitted && f['departureDate'].errors" class="invalid-feedback">
-              <div *ngIf="f['departureDate'].errors['required']">First Name is required</div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-6 mb-3">
-            <label class="form-label">Adults</label>
-            <input type="date" formControlName="adult" class="form-control"
-              [ngClass]="{ 'is-invalid': submitted && f['departureDate'].errors }" />
-            <div *ngIf="submitted && f['departureDate'].errors" class="invalid-feedback">
-              <div *ngIf="f['departureDate'].errors['required']">First Name is required</div>
-            </div>
-          </div>
-          <div class="col-sm-6 mb-3">
-            <label class="form-label">Children</label>
-            <input type="date" formControlName="children" class="form-control"
-              [ngClass]="{ 'is-invalid': submitted && f['departureDate'].errors }" />
-            <div *ngIf="submitted && f['departureDate'].errors" class="invalid-feedback">
-              <div *ngIf="f['departureDate'].errors['required']">First Name is required</div>
-            </div>
-          </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+      <div class="col-sm-6 mb-3">
+        <label class="form-label">Destination</label>
+        <input type="text" formControlName="destinationId" class="form-control" />
       </div>
     </div>
+    <div class="row">
+      <div class="col-sm-6 mb-3">
+        <label class="form-label">Departure Date</label>
+        <input type="date" formControlName="departureDate" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f['departureDate'].errors }" />
+        <div *ngIf="submitted && f['departureDate'].errors" class="invalid-feedback">
+          <div *ngIf="f['departureDate'].errors['required']">First Name is required</div>
+        </div>
+      </div>
+      <div class="col-sm-6 mb-3">
+        <label class="form-label">Fare / Ticket</label>
+        <input type="text" formControlName="fare" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f['fare'].errors }" />
+        <div *ngIf="submitted && f['fare'].errors" class="invalid-feedback">
+          <div *ngIf="f['fare'].errors['required']">Fare is required</div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 mb-3">
+        <label class="form-label">Number of Passengers</label>
+        <input type="text" formControlName="totalPassenger" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f['totalPassenger'].errors }" />
+        <div *ngIf="submitted && f['totalPassenger'].errors" class="invalid-feedback">
+          <div *ngIf="f['totalPassenger'].errors['required']">Total passenger is required</div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 mb-3">
+        <label class="form-label">Adults</label>
+        <input type="text" formControlName="adult" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f['adult'].errors }" />
+        <div *ngIf="submitted && f['adult'].errors" class="invalid-feedback">
+          <div *ngIf="f['adult'].errors['required']">Adult is required</div>
+        </div>
+      </div>
+      <div class="col-sm-6 mb-3">
+        <label class="form-label">Children</label>
+        <input type="text" formControlName="children" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f['children'].errors }" />
+        <div *ngIf="submitted && f['children'].errors" class="invalid-feedback">
+          <div *ngIf="f['children'].errors['required']">Children is required</div>
+        </div>
+      </div>
+    </div>
+
   </div>
-</div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="close()">Close</button>
+    <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Save changes</button>
+  </div>
+</form>

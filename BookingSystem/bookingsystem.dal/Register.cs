@@ -30,6 +30,7 @@ namespace BookingSystem.dal
             {
                 var dbContext = scope.ServiceProvider.GetRequiredService<BookingSystemDbContext>();
                 var dataSeeder = new DataSeeder(dbContext);
+                dataSeeder.SeedAdminUser();
                 dataSeeder.SeedLocation();
                 dataSeeder.SeedTrains();
                 dataSeeder.SeedBuses();

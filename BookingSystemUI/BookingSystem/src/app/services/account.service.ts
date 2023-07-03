@@ -13,6 +13,7 @@ export class AccountService {
     private userSubject: BehaviorSubject<IUser | null>;
     public user: Observable<IUser | null>;
     baseURL= environment.baseUrl;
+    private userRole: string = '';
 
     constructor(
         private router: Router,
@@ -44,7 +45,7 @@ export class AccountService {
     }
 
     register(user: IUser) {
-        user.roleId = Role.Customers;
+        user.roleId = Role.User;
         return this.http.post(`${this.baseURL}users`, user);
     }
 

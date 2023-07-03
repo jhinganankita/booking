@@ -19,7 +19,7 @@ namespace BookingSystem.dal.Entity
 
         [Required(ErrorMessage = "Departure time is required")]
         public string DepartureTime { get; set; }
-
+        public int Fare { get; set; }
         public int RouteId { get; set; }
         public int BusId { get; set; }
         public Buses Bus { get; set; }

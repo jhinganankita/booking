@@ -13,4 +13,10 @@ export class Schedules {
   busDto!: Bus;
   trainDto!: Train;
   planeDto!: Plane;
+  sourceId!: number;
+  destinationId!: number;
+  sourceName!: string;
+  destinationName!: string;
+  departureDate!: Date;
+  fare!: number;
 }

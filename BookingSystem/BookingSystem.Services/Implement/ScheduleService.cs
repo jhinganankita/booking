@@ -35,17 +35,17 @@ namespace BookingSystem.Services.Implement
 
                     case TicketTypeEnum.Train:
                         var trainSchedule = await _iTrainScheduleRepository.FindAsync(x => x.RouteId == route.routeDto.Id, x => x.Train);
-                        schedules = trainSchedule.ConvertToSchedulesDto();
+                        schedules = trainSchedule.ConvertToSchedulesDto(route.routeDto, scheduleRequest.DepartureDate);
                         break;
                     case TicketTypeEnum.Plane:
                         var planeSchedule = await _iPlaneScheduleRepository.FindAsync(x => x.RouteId == route.routeDto.Id, x => x.Plane);
-                        schedules = planeSchedule.ConvertToSchedulesDto();
+                        schedules = planeSchedule.ConvertToSchedulesDto(route.routeDto, scheduleRequest.DepartureDate);
                         break;
 
                     case TicketTypeEnum.Bus:
                     default:
                         var busSchedule = await _iBusScheduleRepository.FindAsync(x => x.RouteId == route.routeDto.Id, x => x.Bus);
-                        schedules = busSchedule.ConvertToSchedulesDto();
+                        schedules = busSchedule.ConvertToSchedulesDto(route.routeDto, scheduleRequest.DepartureDate);
                         break;
                 }
 

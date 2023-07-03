@@ -19,6 +19,38 @@ namespace BookingSystem.dal
         public DbSet<PlaneSchedules> PlaneSchedules { get; set; }
         public DbSet<Routes> Routes { get; set; }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Routes>()
+            .HasOne(r => r.Source)
+            .WithMany()
+            .HasForeignKey(r => r.SourceId)
+            .OnDelete(DeleteBehavior.Restrict);
 
+            modelBuilder.Entity<Routes>()
+                .HasOne(r => r.Destination)
+                .WithMany()
+                .HasForeignKey(r => r.DestinationId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+
+            modelBuilder.Entity<Tickets>()
+            .HasOne(r => r.Source)
+            .WithMany()
+            .HasForeignKey(r => r.SourceId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Tickets>()
+                .HasOne(r => r.Destination)
+                .WithMany()
+                .HasForeignKey(r => r.DestinationId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Users>()
+                .HasMany(u => u.Tickets)                // Users can have multiple Tickets
+                .WithOne(t => t.User)                    // Ticket belongs to one User
+                .HasForeignKey(t => t.UserId)            // Foreign key property in Tickets table
+                .OnDelete(DeleteBehavior.Restrict);
+        }
     }
 }

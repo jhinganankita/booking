@@ -80,7 +80,8 @@ export class BookingComponent {
     let payload: IScheduleRequest = {
       sourceId: this.form.value.sourceId,
       destinationId: this.form.value.destinationId,
-      ticketType: Number(this.form.value.ticketType)
+      ticketType: Number(this.form.value.ticketType),
+      departureDate: new Date(this.form.value.departureDate)
     }
     this.bookingService.searchBookings(payload)
       .subscribe((data) => {

@@ -15,8 +15,14 @@ export class ScheduledetailsComponent {
 
  constructor(private modalService: NgbModal) {}
 
- confirmBooking() {
-  const modalRef = this.modalService.open(ConfirmbookingComponent);
+ confirmBooking(scheduleId: number) {
+  let selectedSchedule = this.schedules.find(x=>x.id== scheduleId);
+  const confirmBookingModalRef = this.modalService.open(ConfirmbookingComponent);
+    confirmBookingModalRef.componentInstance.schedule = selectedSchedule;
+    confirmBookingModalRef.componentInstance.closeModal.subscribe(($e:any) => {
+      confirmBookingModalRef.close();
+    })
   // Additional configuration or data passing to the modal can be done here
+  
 }
 }

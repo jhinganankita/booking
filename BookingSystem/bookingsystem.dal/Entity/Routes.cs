@@ -22,5 +22,8 @@ namespace BookingSystem.dal.Entity
 
         public decimal JourneyTime { get; set; }
         public int Stops { get; set; }
+
+        public Location Source { get; set; }
+        public Location Destination { get; set; }
     }
 }

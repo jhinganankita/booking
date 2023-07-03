@@ -1,0 +1,31 @@
+<table class="row-border hover">
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Ticket Type</th>
+        <th>Source</th>
+        <th>Destination</th>
+        <th>Departure Date</th>
+        <th>Total Passengers</th>
+        <th>Adults</th>
+        <th>Children</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let ticket of tickets">
+        <td>{{ ticket.username}}</td>
+        <td>{{ ticket.firstName}}</td>
+        <td>{{ ticket.lastName}}</td>
+        <td>{{ getTicketTyoe(ticket.ticketType)}}</td>
+        <td>{{ ticket.sourceName}}</td>
+        <td>{{ ticket.destinationName}}</td>
+        <td>{{ ticket.departureDate}}</td>
+        <td>{{ ticket.totalPassengers}}</td>
+        <td>{{ ticket.adult}}</td>
+        <td>{{ ticket.children}}</td>
+      </tr>      
+    </tbody>
+  </table>
+  

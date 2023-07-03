@@ -21,5 +21,6 @@ namespace BookingSystem.Services.Implement
 
             return (true, ticketTypes.ConvertToTicketTypeDto(), string.Empty);
         }
+
     }
 }

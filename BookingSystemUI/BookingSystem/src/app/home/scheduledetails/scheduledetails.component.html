@@ -7,6 +7,7 @@
       <th>Departure Time</th>
       <th>Journey Time</th>
       <th>Stops</th>
+      <th>Fare</th>
       <th> ID</th>
       <th> Name</th>
       <th> Capacity</th>
@@ -21,23 +22,26 @@
       <td>{{ schedule.departureTime }}</td>
       <td>{{ schedule.journeyTime }}</td>
       <td>{{ schedule.stops }}</td>
+      <td >{{ schedule.fare | currency: 'EUR':'symbol' }}</td>
 
       <td *ngIf="schedule.busDto">{{ schedule.busDto.id }}</td>
       <td *ngIf="schedule.busDto">{{ schedule.busDto.name }}</td>
       <td *ngIf="schedule.busDto">{{ schedule.busDto.capacity }}</td>
-      <td *ngIf="schedule.busDto">{{ schedule.busDto.fare }}</td>
+     
 
       <td *ngIf="schedule.trainDto">{{ schedule.trainDto.id }}</td>
       <td *ngIf="schedule.trainDto">{{ schedule.trainDto.name }}</td>
       <td *ngIf="schedule.trainDto">{{ schedule.trainDto.capacity }}</td>
-      <td *ngIf="schedule.trainDto">{{ schedule.trainDto.fare }}</td>
+     
+      
 
       <td *ngIf="schedule.planeDto">{{ schedule.planeDto.id }}</td>
       <td *ngIf="schedule.planeDto">{{ schedule.planeDto.name }}</td>
       <td *ngIf="schedule.planeDto">{{ schedule.planeDto.capacity }}</td>
-      <td *ngIf="schedule.planeDto">{{ schedule.planeDto.fare }}</td>
+      
+      
       <td>
-        <button (click)="confirmBooking()" class="btn btn-primary">        
+        <button (click)="confirmBooking(schedule.id)" class="btn btn-primary">        
           Book
         </button>
       </td>

@@ -12,6 +12,7 @@ namespace BookingSystem.Services
             serviceCollection.AddScoped<ILocationService, LocationService>();
             serviceCollection.AddScoped<IUserService, UserService>();
             serviceCollection.AddScoped<ITicketTypeService, TicketTypeService>();
+            serviceCollection.AddScoped<ITicketService, TicketService>();
             serviceCollection.AddScoped<IScheduleService, ScheduleService>();
             serviceCollection.AddScoped<IRouteService, RouteService>();
             Register.ConfigureServices(serviceCollection);

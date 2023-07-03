@@ -78,5 +78,20 @@ namespace BookingSystem.Services.Implement
             return (true, users.ConvertToUsersDto(), String.Empty);
         }
 
+
+        public async Task<(bool isSuccess, UserDto userDto, string errorMessage)> GetByUserId(int userId)
+        {
+            try
+            {
+                var user = (await _userRepository.FindAsync(x => x.Id == userId)).First();
+
+                return (true, user.ConvertToUserDto(), string.Empty);
+            }
+            catch (Exception ex)
+            {
+                return (false, null, ex.Message);
+            }
+        }
+
     }
 }

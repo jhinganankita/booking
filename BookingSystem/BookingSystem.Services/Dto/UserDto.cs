@@ -26,9 +26,9 @@ namespace BookingSystem.Services.Dto
         [Required(ErrorMessage = "LastName is required")]
         [MaxLength(20, ErrorMessage = "LastName cannot be greater than 20 characters")]
         public string LastName { get; set; }
-        public long Mobile { get; set; }
+        public string Mobile { get; set; }
         //public string Token { get; set; }
         [Required]
-        public int RoleId { get; set; }
+        public string RoleName { get; set; }
     }
 }

@@ -12,5 +12,7 @@ namespace BookingSystem.Services.Dto
         public decimal JourneyTime { get; set; }
         public int Stops { get; set; }
 
+        public string SourceName { get; set; }
+        public string DestinationName { get; set; }
     }
 }
