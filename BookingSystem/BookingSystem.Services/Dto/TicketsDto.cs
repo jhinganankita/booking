@@ -37,9 +37,14 @@ namespace BookingSystem.dal.Entity
         public DateTime? ReturnDate { get; set; }
         public UserDto? User { get; set; }
 
-        public string SourceName { get; set; }  
+        public string SourceName { get; set; }
 
         public string DestinationName { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Username { get; set; }
+        public string TicketTypeName { get; set; }
+
 
     }
 }

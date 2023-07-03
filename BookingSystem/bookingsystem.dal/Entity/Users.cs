@@ -32,8 +32,7 @@ namespace BookingSystem.dal.Entity
         public string Mobile { get; set; }
         //public string Token { get; set; }
         [Required]
-        [DefaultValue(1)]
-        public int RoleId { get; set; }
+        public string RoleName { get; set; }
 
         public ICollection<Tickets> Tickets { get; set; }
 

@@ -11,9 +11,10 @@ const accountModule = () => import('./account/account.module').then(x => x.Accou
 const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'booking', component: BookingComponent, canActivate: [AuthGuard] },
+  { path: 'admin', component: AdminComponent, canActivate: [RoleGuard], data: { allowedRoles: ['admin'] } },
   { path: 'account', loadChildren: accountModule },
   { path: 'tickethistory', component: TickethistoryComponent, canActivate: [AuthGuard] },
-  { path: 'admin', component: AdminComponent, canActivate: [RoleGuard], data: { allowedRoles: ['admin'] } },
+
   // otherwise redirect to home
   { path: '**', redirectTo: '' }
 ];

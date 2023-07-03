@@ -1,5 +1,6 @@
 ﻿using BookingSystem.dal.Entity;
 using BookingSystem.Services.Dto;
+using System;
 using System.Net.Sockets;
 
 namespace BookingSystem.Services.Extensions
@@ -48,12 +49,18 @@ namespace BookingSystem.Services.Extensions
                 DestinationId = ticket.DestinationId,
                 DepartureDate = ticket.DepartureDate,
                 TicketType = ticket.TicketType,
+                TicketTypeName = Enum.GetName(typeof(TicketTypeEnum), ticket.TicketType),
                 TotalPassengers = ticket.TotalPassengers,
                 Adult = ticket.Adult,
                 Children = ticket.Children,
                 SourceName = ticket.Source.Name,
-                DestinationName = ticket.Destination.Name
+                DestinationName = ticket.Destination.Name,
+                FirstName = ticket.User.FirstName,
+                LastName = ticket.User.LastName,
+                Username = ticket.User.Username,
+
             });
         }
     }
 }
+

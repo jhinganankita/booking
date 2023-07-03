@@ -40,6 +40,7 @@ namespace BookingSystem.dal
                 dataSeeder.SeedPlaneSchedules();
                 dataSeeder.SeedBusSchedules();
                 dataSeeder.SeedRoutes();
+                dataSeeder.SeedTicketData();
             }
         }
     }

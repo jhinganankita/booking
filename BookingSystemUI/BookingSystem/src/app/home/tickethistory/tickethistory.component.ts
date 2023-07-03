@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Columns, Config, DefaultConfig } from 'ngx-easy-table';
 import { ITicket } from 'src/app/models/ITicket';
 import { ITicketXmlResponse } from 'src/app/models/ITicketXmlResponse';
 import { TicketTypeEnum } from 'src/app/models/TicketTypeEnum';

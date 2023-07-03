@@ -1,31 +1,60 @@
-<table class="row-border hover">
-    <thead>
-      <tr>
-        <th>Username</th>
-        <th>First name</th>
-        <th>Last name</th>
-        <th>Ticket Type</th>
-        <th>Source</th>
-        <th>Destination</th>
-        <th>Departure Date</th>
-        <th>Total Passengers</th>
-        <th>Adults</th>
-        <th>Children</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let ticket of tickets">
-        <td>{{ ticket.username}}</td>
-        <td>{{ ticket.firstName}}</td>
-        <td>{{ ticket.lastName}}</td>
-        <td>{{ getTicketTyoe(ticket.ticketType)}}</td>
-        <td>{{ ticket.sourceName}}</td>
-        <td>{{ ticket.destinationName}}</td>
-        <td>{{ ticket.departureDate}}</td>
-        <td>{{ ticket.totalPassengers}}</td>
-        <td>{{ ticket.adult}}</td>
-        <td>{{ ticket.children}}</td>
-      </tr>      
-    </tbody>
-  </table>
-  
+<div class="mat-elevation-z8">
+  <div class="parent">
+    <mat-form-field floatPlaceholder="never">
+      <div style="text-align:left;">
+        <input id="filter" matInput #filter (keyup)="doFilter(filter.value)" placeholder="Filter name" >
+      </div>
+    </mat-form-field>
+    <button extended mat-fab type="button" (click)="createZip()">Backup (Zip File)</button>
+</div>
+<table mat-table  [dataSource]="dataSource" matSort class="mat-elevation-z8">
+  <ng-container matColumnDef="username">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Username </th>
+    <td mat-cell *matCellDef="let element"> {{element.username}} </td>
+  </ng-container>
+  <ng-container matColumnDef="firstName">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> First name </th>
+    <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
+  </ng-container>
+  <ng-container matColumnDef="lastName">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Last name </th>
+    <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+  </ng-container>
+  <ng-container matColumnDef="ticketTypeName">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Ticket Type </th>
+    <td mat-cell *matCellDef="let element"> {{element.ticketTypeName}} </td>
+  </ng-container>
+  <ng-container matColumnDef="sourceName">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Source </th>
+    <td mat-cell *matCellDef="let element"> {{element.sourceName}} </td>
+  </ng-container>
+  <ng-container matColumnDef="destinationName">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Destination </th>
+    <td mat-cell *matCellDef="let element"> {{element.destinationName}} </td>
+  </ng-container>
+  <ng-container matColumnDef="departureDate">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Departure Date </th>
+    <td mat-cell *matCellDef="let element"> {{element.departureDate}} </td>
+  </ng-container>
+  <ng-container matColumnDef="totalPassengers">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> TotalPassengers </th>
+    <td mat-cell *matCellDef="let element"> {{element.totalPassengers}} </td>
+  </ng-container>
+  <ng-container matColumnDef="adult">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Adults </th>
+    <td mat-cell *matCellDef="let element"> {{element.adult}} </td>
+  </ng-container>
+  <ng-container matColumnDef="children">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Children </th>
+    <td mat-cell *matCellDef="let element"> {{element.children}} </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<mat-paginator [pageSizeOptions]="[5, 10, 20]"
+showFirstLastButtons
+aria-label="Select page of periodic elements">
+</mat-paginator>
+</div>
+
+

@@ -20,16 +20,28 @@ namespace BookingSystem.dal.Seed
                 FirstName = "Admin",
                 LastName = "Admin",
                 Mobile = "8888888888",
-                Password = "12345678"
+                Password = "12345678",
+                RoleName = "admin"
             });
 
             _dbContext.Users.Add(new Users()
             {
-                Username = "jhingan.ankita@gmail.com",
-                FirstName = "jhingan",
-                LastName = "ankita",
+                Username = "job@docuware.com",
+                FirstName = "ankita",
+                LastName = "jhingan",
                 Mobile = "8888888888",
-                Password = "12345678"
+                Password = "12345678",
+                RoleName = "user"
+            });
+
+            _dbContext.Users.Add(new Users()
+            {
+                Username = "jobs@docuware.com",
+                FirstName = "ankita",
+                LastName = "sharma",
+                Mobile = "8888888888",
+                Password = "12345678",
+                RoleName = "user"
             });
         }
         public void SeedLocation()
@@ -225,6 +237,28 @@ namespace BookingSystem.dal.Seed
 
             // Add entities to the in-memory database
             _dbContext.PlaneSchedules.AddRange(entity1, entity2, entity3, entity4, entity5, entity6, entity7, entity8, entity9, entity10, entity11, entity12, entity13, entity14, entity15, entity16, entity17, entity18, entity19, entity20, entity21, entity22, entity23, entity24);
+            _dbContext.SaveChanges();
+        }
+
+        public void SeedTicketData()
+        {
+            // Create instances of your entity classes
+            var entity1 = new Tickets { UserId = 2, TicketType = 1, SourceId = 1, DestinationId = 2, DepartureDate = DateTime.Now.AddDays(1), TotalPassengers = 2, Adult = 1, Children = 1 };
+            var entity2 = new Tickets { UserId = 2, TicketType = 1, SourceId = 1, DestinationId = 2, DepartureDate = DateTime.Now.AddDays(1), TotalPassengers = 3, Adult = 2, Children = 1 };
+            var entity3 = new Tickets { UserId = 2, TicketType = 2, SourceId = 3, DestinationId = 2, DepartureDate = DateTime.Now.AddDays(1), TotalPassengers = 2, Adult = 2, Children = 0 };
+            var entity4 = new Tickets { UserId = 2, TicketType = 2, SourceId = 4, DestinationId = 2, DepartureDate = DateTime.Now.AddDays(1), TotalPassengers = 3, Adult = 3, Children = 0 };
+            var entity5 = new Tickets { UserId = 2, TicketType = 3, SourceId = 4, DestinationId = 2, DepartureDate = DateTime.Now.AddDays(1), TotalPassengers = 1, Adult = 1, Children = 0 };
+            var entity6 = new Tickets { UserId = 2, TicketType = 3, SourceId = 1, DestinationId = 3, DepartureDate = DateTime.Now.AddDays(1), TotalPassengers = 3, Adult = 2, Children = 1 };
+
+            var entity7 = new Tickets { UserId = 3, TicketType = 1, SourceId = 1, DestinationId = 2, DepartureDate = DateTime.Now.AddDays(1), TotalPassengers = 2, Adult = 1, Children = 1 };
+            var entity8 = new Tickets { UserId = 3, TicketType = 1, SourceId = 4, DestinationId = 2, DepartureDate = DateTime.Now.AddDays(1), TotalPassengers = 3, Adult = 2, Children = 1 };
+            var entity9 = new Tickets { UserId = 3, TicketType = 2, SourceId = 3, DestinationId = 1, DepartureDate = DateTime.Now.AddDays(1), TotalPassengers = 2, Adult = 2, Children = 0 };
+            var entity10 = new Tickets { UserId = 3, TicketType = 2, SourceId = 4, DestinationId = 2, DepartureDate = DateTime.Now.AddDays(1), TotalPassengers = 3, Adult = 3, Children = 0 };
+            var entity11 = new Tickets { UserId = 3, TicketType = 3, SourceId = 1, DestinationId = 4, DepartureDate = DateTime.Now.AddDays(1), TotalPassengers = 1, Adult = 1, Children = 0 };
+            var entity12 = new Tickets { UserId = 3, TicketType = 3, SourceId = 1, DestinationId = 3, DepartureDate = DateTime.Now.AddDays(1), TotalPassengers = 3, Adult = 2, Children = 1 };
+
+            // Add entities to the in-memory database
+            _dbContext.Tickets.AddRange(entity1, entity2, entity3, entity4, entity5, entity6, entity7, entity8, entity9, entity10, entity11, entity12);
             _dbContext.SaveChanges();
         }
     }

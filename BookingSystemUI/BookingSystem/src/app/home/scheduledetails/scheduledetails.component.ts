@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Schedules } from 'src/app/models/Schedule';
 import { ConfirmbookingComponent } from '../confirmbooking/confirmbooking.component';
-
+import { TicketTypeEnum } from 'src/app/models/TicketTypeEnum';
 
 @Component({
   selector: 'app-scheduledetails',
@@ -22,7 +22,9 @@ export class ScheduledetailsComponent {
     confirmBookingModalRef.componentInstance.closeModal.subscribe(($e:any) => {
       confirmBookingModalRef.close();
     })
-  // Additional configuration or data passing to the modal can be done here
-  
-}
+  }
+
+  getTicketTyoe(typeId: number): string {
+    return TicketTypeEnum[typeId];
+  }
 }

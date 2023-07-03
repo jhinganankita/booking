@@ -33,12 +33,14 @@ namespace BookingSystem.dal.Entity
         public int TotalPassengers { get; set; }
         [Required]
         public int Adult { get; set; }
-        public int Children { get; set; }        
-        
+        public int Children { get; set; }
+
         public DateTime ReturnDate { get; set; }
 
         public int UserId { get; set; }     // Foreign key property
         public Users User { get; set; }     // Navigation property
+
+       
 
     }
 }

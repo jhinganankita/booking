@@ -6,19 +6,19 @@
         <th>Total Passengers</th>
         <th>Source Name</th>
         <th>Destination Name</th>
-        <th>DepartureDate</th>     
-        
+        <th>DepartureDate</th>
+
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let ticket of tickets">
-        <td>{{ ticket.id }}</td>        
+        <td>{{ ticket.id }}</td>
         <td>{{  getTicketTyoe(ticket.ticketType) }}</td>
         <td>{{ ticket.totalPassengers }}</td>
         <td>{{ ticket.sourceName }}</td>
         <td>{{ ticket.destinationName }}</td>
         <td>{{ ticket.departureDate | date }}</td>
-       
+
       </tr>
     </tbody>
   </table>

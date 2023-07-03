@@ -17,7 +17,7 @@ namespace BookingSystem.Services.Extensions
             //user.PostalCode = userDto.PostalCode;
             //user.Phone = userDto.Phone;
             user.Mobile = userDto.Mobile;
-            //user.RoleId = userDto.RoleId;
+            user.RoleName = userDto.RoleName;
             //user.Token = userDto.Token;
             return user;
         }
@@ -36,7 +36,7 @@ namespace BookingSystem.Services.Extensions
                 //PostalCode = user.PostalCode,
                 //Phone = user.Phone,
                 Mobile = user.Mobile,
-                RoleName = user.Username == "admin@gmail.com" ? "admin" : "user",
+                RoleName = user.RoleName,
                 //Token = user.Token
             };
         }
@@ -55,7 +55,7 @@ namespace BookingSystem.Services.Extensions
                 //PostalCode = user.PostalCode,
                 //Phone = user.Phone,
                 Mobile = user.Mobile,
-               
+                RoleName = user.RoleName,
                 //Token = user.Token
             });
         }

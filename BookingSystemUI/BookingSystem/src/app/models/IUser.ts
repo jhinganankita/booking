@@ -7,5 +7,5 @@ export interface IUser {
   lastName?: string;
   token?: string;
   mobile?:string;
-  roleId?:string;
+  roleName?:string;
 }

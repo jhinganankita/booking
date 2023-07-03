@@ -52,7 +52,7 @@ export class BookingService {
 
     getUserTickets(): Observable<ITicket[]>{
 
-      return this.httpClient.get<ITicket[]>(`${this.baseURL}admintickets/GetUserTickets`);
+      return this.httpClient.get<ITicket[]>(`${this.baseURL}admintickets`);
     }
 }
 

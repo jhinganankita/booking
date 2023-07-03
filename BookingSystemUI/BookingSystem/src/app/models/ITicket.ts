@@ -12,8 +12,9 @@ export interface ITicket {
   id: number | null;
   sourceName: string | null;
   destinationName: string | null;
-  username: string | null; 
-  firstName: string | null; 
-  lastName: string | null; 
+  username: string | null;
+  firstName: string | null;
+  lastName: string | null;
+  TicketTypeName: string | null;
   // Add other properties as needed
 }

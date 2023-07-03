@@ -19,7 +19,6 @@ namespace BookingSystem.dal.Entity
         public string DepartureTime { get; set; }
 
         public decimal JourneyTime { get; set; }
-        public int Stops { get; set; }
         public int PlaneId { get; set; }
     }
 }

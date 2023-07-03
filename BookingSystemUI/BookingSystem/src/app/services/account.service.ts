@@ -45,7 +45,7 @@ export class AccountService {
     }
 
     register(user: IUser) {
-        user.roleId = Role.User;
+        user.roleName = Role.User;
         return this.http.post(`${this.baseURL}users`, user);
     }
 

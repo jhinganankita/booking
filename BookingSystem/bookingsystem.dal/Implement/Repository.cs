@@ -36,9 +36,17 @@ namespace BookingSystem.dal.Implement
             return await dbSet.FindAsync(id);
         }
 
-        public async Task<IEnumerable<T>> GetAllAsync()
+        public async Task<IEnumerable<T>> GetAllAsync(params Expression<Func<T, object>>[] includes)
         {
-            return await dbSet.ToListAsync();
+            var query = dbSet.AsQueryable();
+
+            foreach (var includeExpression in includes)
+            {
+                query = query.Include(includeExpression);
+            }
+
+            return await query.ToListAsync();
+            
         }
 
         public async Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> filter, params Expression<Func<T, object>>[] includes)

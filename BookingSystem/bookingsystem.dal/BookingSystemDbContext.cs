@@ -46,6 +46,13 @@ namespace BookingSystem.dal
                 .HasForeignKey(r => r.DestinationId)
                 .OnDelete(DeleteBehavior.Restrict);
 
+            modelBuilder.Entity<Tickets>()
+                .HasOne(r => r.User)
+                .WithMany()
+                .HasForeignKey(r => r.UserId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+           
             modelBuilder.Entity<Users>()
                 .HasMany(u => u.Tickets)                // Users can have multiple Tickets
                 .WithOne(t => t.User)                    // Ticket belongs to one User

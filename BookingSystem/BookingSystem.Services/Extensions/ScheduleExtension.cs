@@ -1,5 +1,6 @@
 ﻿using BookingSystem.dal.Entity;
 using BookingSystem.Services.Dto;
+using static System.Formats.Asn1.AsnWriter;
 
 
 namespace BookingSystem.Services.Extensions
@@ -14,13 +15,15 @@ namespace BookingSystem.Services.Extensions
                 TicketType = TicketTypeEnum.Bus,
                 ArrivalTime = s.ArrivalTime,
                 DepartureTime = s.DepartureTime,
-                BusDto = s.Bus.ConvertToBusDto(),
+                BusDto = s.Bus?.ConvertToBusDto(),
                 SourceId = routeDto.SourceId,
                 DestinationId = routeDto.DestinationId,
                 SourceName = routeDto.SourceName,
                 DestinationName = routeDto.DestinationName,
                 DepartureDate = departureDate,
-                Fare= s.Fare
+                Fare= s.Fare,
+                Stops = routeDto.Stops,
+                JourneyTime = routeDto.JourneyTime
             }).ToList();
         }
         public static IEnumerable<SchedulesDto> ConvertToSchedulesDto(this IEnumerable<TrainSchedules> trainSchedules, RouteDto routeDto, DateTime departureDate)
@@ -28,7 +31,7 @@ namespace BookingSystem.Services.Extensions
             return trainSchedules.Select(s => new SchedulesDto()
             {
                 Id = s.Id,
-                TicketType = TicketTypeEnum.Bus,
+                TicketType = TicketTypeEnum.Train,
                 ArrivalTime = s.ArrivalTime,
                 DepartureTime = s.DepartureTime,
                 TrainDto = s.Train.ConvertToTrainDto(),
@@ -37,7 +40,9 @@ namespace BookingSystem.Services.Extensions
                 SourceName = routeDto.SourceName,
                 DestinationName = routeDto.DestinationName,
                 DepartureDate = departureDate,
-                Fare = s.Fare
+                Fare = s.Fare,
+                Stops = routeDto.Stops,
+                JourneyTime = routeDto.JourneyTime
             }).ToList();
         }
         public static IEnumerable<SchedulesDto> ConvertToSchedulesDto(this IEnumerable<PlaneSchedules> planeSchedules, RouteDto routeDto, DateTime departureDate)
@@ -45,7 +50,7 @@ namespace BookingSystem.Services.Extensions
             return planeSchedules.Select(s => new SchedulesDto()
             {
                 Id = s.Id,
-                TicketType = TicketTypeEnum.Bus,
+                TicketType = TicketTypeEnum.Plane,
                 ArrivalTime = s.ArrivalTime,
                 DepartureTime = s.DepartureTime,
                 PlaneDto = s.Plane.ConvertToPlaneDto(),
@@ -54,7 +59,9 @@ namespace BookingSystem.Services.Extensions
                 SourceName = routeDto.SourceName,
                 DestinationName = routeDto.DestinationName,
                 DepartureDate = departureDate,
-                Fare = s.Fare
+                Fare = s.Fare,
+                Stops = routeDto.Stops,
+                JourneyTime = routeDto.JourneyTime
             }).ToList();
         }
     }

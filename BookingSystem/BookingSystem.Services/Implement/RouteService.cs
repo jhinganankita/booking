@@ -5,7 +5,7 @@ using BookingSystem.Services.Interface;
 
 namespace BookingSystem.Services.Implement
 {
-    internal class RouteService : IRouteService
+    public class RouteService : IRouteService
     {
         readonly IRoutesRepository _routesRepository;
         public RouteService(IRoutesRepository routesRepository)

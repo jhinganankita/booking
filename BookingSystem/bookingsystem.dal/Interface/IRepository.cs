@@ -13,7 +13,7 @@ namespace BookingSystem.dal.Interface
         public Task<T> GetById(object id);
 
         public Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> filter, params Expression<Func<T, object>>[] includes);
-        public Task<IEnumerable<T>> GetAllAsync();
+        public Task<IEnumerable<T>> GetAllAsync(params Expression<Func<T, object>>[] includes);
    
         public Task CommitAsync();
     }

@@ -68,7 +68,8 @@ export class ConfirmbookingComponent {
         destinationName: this.schedule.destinationName,
         username: null,
         firstName: null,
-        lastName: null
+        lastName: null,
+        TicketTypeName: null
       }
 
 
@@ -87,13 +88,15 @@ export class ConfirmbookingComponent {
             Adult: Number(this.form.value.adult),
           }
           const xmlData = xml2js.js2xml({ Booking: ticketXmlResponse }, { compact: true, ignoreComment: true, spaces: 4 });
-
+          close();
           // Save XML file
           const blob = new Blob([xmlData], { type: 'text/xml' });
           saveAs(blob, 'booking.xml');
+
         },
           (error) => {
             console.log(error.message);
+            close();
           });
     }
   }

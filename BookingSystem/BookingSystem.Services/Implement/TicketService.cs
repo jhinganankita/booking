@@ -48,7 +48,7 @@ namespace BookingSystem.Services.Implement
 
         public async Task<(bool isSuccess, IEnumerable<TicketsDto> ticketsDto, string errorMessage)> GetUserTickets()
         {
-            var tickets = await _iTicketsRepository.GetAllAsync();
+            var tickets = await _iTicketsRepository.GetAllAsync(x => x.Source, x => x.Destination, x=> x.User);
             return (true, tickets.ConvertToTicketsDto(), null);
         }
     }

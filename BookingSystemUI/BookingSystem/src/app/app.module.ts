@@ -15,9 +15,19 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ConfirmbookingComponent } from './home/confirmbooking/confirmbooking.component';
 import { AdminComponent } from './admin/admin.component';
 import { TickethistoryComponent } from './home/tickethistory/tickethistory.component';
-import { TableModule } from 'ngx-easy-table';
-import { DataTablesModule } from "angular-datatables";
 
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //import { LoginComponent } from './account/login/login.component';
 //import { RegisterComponent } from './account/register/register.component';
 
@@ -46,10 +56,15 @@ const routes: Routes = [
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    TableModule,
-    DataTablesModule
+    BrowserAnimationsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatButtonModule,
+    MatToolbarModule, MatSidenavModule, MatIconModule, MatListModule,
+    MatFormFieldModule,MatInputModule
   ],
-  providers: [],
+  providers: [MatSnackBar],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
