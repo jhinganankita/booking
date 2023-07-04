@@ -55,9 +55,9 @@ namespace BookingSystem.Services.Extensions
                 Children = ticket.Children,
                 SourceName = ticket.Source.Name,
                 DestinationName = ticket.Destination.Name,
-                FirstName = ticket.User.FirstName,
-                LastName = ticket.User.LastName,
-                Username = ticket.User.Username,
+                FirstName = ticket.User?.FirstName,
+                LastName = ticket.User?.LastName,
+                Username = ticket.User?.Username,
 
             });
         }

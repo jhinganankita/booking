@@ -64,6 +64,7 @@ namespace BookingSystem.Api.Controllers
         [Route("tickets")]
         public async Task<IActionResult> GetTickets([FromQuery] int userId)
         
+        
         {
             var result = await _iTicketService.GetTicketsByUserId(userId);
 

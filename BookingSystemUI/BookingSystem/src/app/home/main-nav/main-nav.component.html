@@ -1,9 +1,19 @@
 <nav *ngIf="this.isAuthenticated" class="navbar navbar-expand navbar-dark bg-dark px-3">
-  <div class="navbar-nav">
-    <p class="h2" style="color:aliceblue">{{title}}</p>
-      <!-- <a class="nav-item nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
-      <a class="nav-item nav-link" routerLink="/users" routerLinkActive="active">Users</a> -->
-
-      <button class="btn btn-link nav-item nav-link" (click)="logout()">Logout</button>
+  <a class="navbar-brand" href="#" routerLink="{{routerLink}}" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"> {{title}}</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li *ngIf="this.showHistory" class="nav-item">
+        <a class="nav-link" href="#" routerLink="/tickethistory" routerLinkActive="active">History</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/home" routerLinkActive="active" href="#">Documentation</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" (click)="logout()" href="#">Logout</a>
+      </li>
+    </ul>
   </div>
 </nav>
