@@ -43,9 +43,10 @@
       <div class="col-sm-6 mb-3">
         <label class="form-label">Number of Passengers</label>
         <input type="text" formControlName="totalPassenger" class="form-control"
-          [ngClass]="{ 'is-invalid': submitted && f['totalPassenger'].errors }" />
-        <div *ngIf="submitted && f['totalPassenger'].errors" class="invalid-feedback">
-          <div *ngIf="f['totalPassenger'].errors['required']">Total passenger is required</div>
+          [ngClass]="{ 'is-invalid': submitted && f['totalPassenger'].errors  }" required/>
+        <div *ngIf="(submitted && f['totalPassenger'].invalid) || (f['totalPassenger'].touched && f['totalPassenger'].invalid)" class="alert alert-danger">
+          <div *ngIf="f['totalPassenger']?.errors?.['required']">Total passenger is required</div>
+          <div *ngIf="f['totalPassenger']?.errors?.['pattern']">Total passengers must contain only numbers and upto 3 digits.</div>
         </div>
       </div>
     </div>
@@ -54,17 +55,17 @@
         <label class="form-label">Adults</label>
         <input type="text" formControlName="adult" class="form-control"
           [ngClass]="{ 'is-invalid': submitted && f['adult'].errors }" />
-        <div *ngIf="submitted && f['adult'].errors" class="invalid-feedback">
-          <div *ngIf="f['adult'].errors['required']">Adult is required</div>
-        </div>
+          <div *ngIf="(submitted && f['adult'].invalid) || (f['adult'].touched && f['adult'].invalid)" class="alert alert-danger">
+            <div *ngIf="f['adult']?.errors?.['pattern']">Adult must contain only numbers and upto 3 digits.</div>
+          </div>
       </div>
       <div class="col-sm-6 mb-3">
         <label class="form-label">Children</label>
         <input type="text" formControlName="children" class="form-control"
           [ngClass]="{ 'is-invalid': submitted && f['children'].errors }" />
-        <div *ngIf="submitted && f['children'].errors" class="invalid-feedback">
-          <div *ngIf="f['children'].errors['required']">Children is required</div>
-        </div>
+        <div *ngIf="(submitted && f['children'].invalid) || (f['children'].touched && f['children'].invalid)" class="alert alert-danger">
+            <div *ngIf="f['children']?.errors?.['pattern']">Children must contain only numbers and upto 3 digits.</div>
+         </div>
       </div>
     </div>
 

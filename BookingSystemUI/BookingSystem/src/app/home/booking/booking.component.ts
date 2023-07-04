@@ -8,7 +8,7 @@ import { BookingService } from '../../services/booking.service';
 import { ITicketType } from '../../models/ITicketType';
 import { ITicket } from '../../models/ITicket';
 import { ILocation } from '../../models/ILocation';
-import { LocationValidator } from '../../validators/location.validator';
+import { locationValidator } from '../../validators/location.validator';
 import { IScheduleRequest } from 'src/app/models/IScheduleRequest';
 import { TicketTypeEnum } from 'src/app/models/TicketTypeEnum';
 import { Schedules } from 'src/app/models/Schedule';
@@ -40,11 +40,11 @@ export class BookingComponent {
   ngOnInit() {
     this.form = this.formBuilder.group({
       ticketType: ['', Validators.required],
-      sourceId: ['', Validators.required],
+      sourceId: [null, Validators.required],
       destinationId: ['', Validators.required],
       departureDate: ['',Validators.required]
     }, {
-      validator: LocationValidator('sourceId', 'destinationId')
+      validator: locationValidator
     });
 
     this.bookingService.getTicketTypes().subscribe((data) => {

@@ -13,6 +13,8 @@ export class RegisterComponent implements OnInit {
     form!: FormGroup;
     loading = false;
     submitted = false;
+    emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
+    namePattern = "^[a-z0-9_-]{2,20}$";
 
     constructor(
         private formBuilder: FormBuilder,
@@ -23,13 +25,14 @@ export class RegisterComponent implements OnInit {
     ) { }
 
     ngOnInit() {
+
         this.form = this.formBuilder.group({
-            firstName: ['', Validators.required],
-            lastName: ['', Validators.required],
-            username: ['', Validators.required],
-            password: ['', [Validators.required, Validators.minLength(6)]],
-            confirmPassword: ['', [Validators.required, Validators.minLength(6)]],
-            mobile: ['', Validators.required]
+            firstName: ['', [Validators.required, Validators.pattern(this.namePattern), Validators.maxLength(20)]],
+            lastName: ['', [Validators.required, Validators.pattern(this.namePattern), Validators.maxLength(20)]],
+            username: ['', Validators.compose([Validators.required, Validators.pattern(this.emailPattern), Validators.maxLength(20)])],
+            password: ['', [Validators.required, Validators.minLength(8)]],
+            confirmPassword: ['', [Validators.required, Validators.minLength(8)]],
+            mobile: ['', Validators.compose([Validators.required, Validators.pattern('^[0-9]*$'), Validators.minLength(10), Validators.maxLength(13)])]
         },{
           validator: ConfirmedValidator('password', 'confirmPassword')
         });

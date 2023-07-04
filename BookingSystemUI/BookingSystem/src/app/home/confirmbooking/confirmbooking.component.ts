@@ -21,6 +21,8 @@ export class ConfirmbookingComponent {
   @Input() schedule: Schedules = new Schedules();
   get f() { return this.form.controls; }
   defaultDate: string = '2023-07-02';
+  numberPattern = "^[0-9]*$";
+  numberDefaultPattern = "^[0-9]{0,3}$";
   constructor(
     private formBuilder: FormBuilder,
     private bookingService: BookingService,
@@ -32,9 +34,9 @@ export class ConfirmbookingComponent {
       sourceId: [{ value: this.schedule.sourceName, disabled: true }, Validators.required],
       destinationId: [{ value: this.schedule.destinationName, disabled: true }, Validators.required],
       departureDate: [{ value: new Date(this.schedule.departureDate).toISOString().substring(0, 10), disabled: true }, Validators.required],
-      children: [],
-      adult: [],
-      totalPassenger: [],
+      children: ['', [Validators.pattern(this.numberDefaultPattern)]],
+      adult: ['', [Validators.pattern(this.numberDefaultPattern)]],
+      totalPassenger: ['', [Validators.required, Validators.pattern(this.numberPattern)]],
       fare: [{ value: this.schedule.fare, disabled: true }]
     });
   }
@@ -43,7 +45,7 @@ export class ConfirmbookingComponent {
     // Logic to create a new ticket based on the form values
     // and assign it to 'ticket' property
     this.submitted = true;
-
+    const modalThis = this.closeModal;
     // stop here if form is invalid
     if (this.form.invalid) {
       return;
@@ -66,10 +68,10 @@ export class ConfirmbookingComponent {
         id: 0,
         sourceName: this.schedule.sourceName,
         destinationName: this.schedule.destinationName,
-        username: null,
-        firstName: null,
-        lastName: null,
-        TicketTypeName: null
+        username: user.username,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        TicketTypeName: TicketTypeEnum[this.schedule.ticketType]
       }
 
 
@@ -88,7 +90,7 @@ export class ConfirmbookingComponent {
             Adult: Number(this.form.value.adult),
           }
           const xmlData = xml2js.js2xml({ Booking: ticketXmlResponse }, { compact: true, ignoreComment: true, spaces: 4 });
-          close();
+          modalThis.emit('close');
           // Save XML file
           const blob = new Blob([xmlData], { type: 'text/xml' });
           saveAs(blob, 'booking.xml');
@@ -96,7 +98,7 @@ export class ConfirmbookingComponent {
         },
           (error) => {
             console.log(error.message);
-            close();
+            modalThis.emit('close');
           });
     }
   }
